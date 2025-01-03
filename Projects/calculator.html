@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <h1>Calculator</h1>
+</body>
+</html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+       let num1 =  parseInt(prompt("Enter first value:"));
+       let num2 =  parseInt(prompt("Enter second value:"));
+       let op = prompt("Enter the operation:");
+
+       if(op == "+") {
+           alert(num1 + num2);
+       } else if(op == "-") {
+           alert(num1 - num2);
+       } else {
+           alert("Invalid operation.");
+       }
+    });
+</script>
