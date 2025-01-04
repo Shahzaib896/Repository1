@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        
+body{
+    background-color: #f6f5f7;
+}
+*{
+    text-align: center;
+}
+form{
+    margin: auto;
+    margin-top: 10%;
+    width: 50pc;
+    height: 62vh;
+    box-shadow: 6px 10px 14px grey;
+    border-radius: 3%;
+}
+.signIn, .intro{
+    float: left;
+}
+.signIn{
+    width: 25pc;
+    height: 62vh;
+    background-color: white;
+    border-top-left-radius: 3%;
+    border-bottom-left-radius: 3%;
+}
+.signIn h1{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-top: 18%;
+    font-weight: bold;
+}
+.signIn p{
+    color: rgb(37, 36, 36);
+    margin-bottom: -1pc;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+input{
+    background-color:  #eee;
+    border-color: transparent;
+    text-align: left;
+    margin-top: 1.5pc;
+    margin-left: 0;
+    width: 18pc;
+    height: 2pc;
+
+}
+.signIn a{
+    text-decoration: none;
+    color: rgb(37, 36, 36);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.signIn button{
+    color: black;
+    background-color: #FF4B2B;
+    width: 9pc;
+    height: 2.7pc;
+    border: 1px solid #FF4B2B;
+    border-radius: 20px;
+    font-size: 13px;
+    color: white;
+    margin-top: 14px;
+}
+.intro{
+    width: 25pc;
+    height: 62vh;
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+    border-top-right-radius: 3%;
+    border-bottom-right-radius: 3%;
+
+}
+.intro h1{
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-top: 9pc;
+}
+.intro p{
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-left: 1.5pc;
+    margin-right: 1.5pc;
+}
+.intro button{
+    color: black;
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+    width: 9pc;
+    height: 2.7pc;
+    border: 1.5px solid white;
+    border-radius: 20px;
+    font-size: 13px;
+    color: white;
+    margin-top: 14px;
+}
+.intro input{
+    background-color: #fff;
+    margin-top: 3pc;
+}
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <form action="logIn.php" onsubmit="return validation()" method="get">
+        <div class="signIn" id="signin">
+            <h1><b>Sign in</b></h1>
+            <p>or use your account</p>
+            <input type="email" placeholder="Email" name="email" id="email">
+            <input type="password" placeholder="Password" id="password" style="margin-bottom: 1.5pc;" name="password"><br>
+            <a href="#">Forgot your password?</a><br>
+            <button type="submit"><b>Sign In</b></button>
+        </div>
+        <div class="intro" id="intro">
+           <div class="child" style="margin-top: 5pc;">
+            <h2 style="color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><b>Welcome Back!</b></h2>
+            <p style="color: white;"> We are so happy to have you here. It's great to see you again. We hope you had a safe and enjoyable time away.</p>
+            <a href="signUp.html" style="text-decoration: underline; color: white;">New User?</a>
+           </div>
+        </div>
+      </form>
+</body>
+<script>
+    function validation(){
+        let x = document.getElementById('email').value;
+        let y = document.getElementById('password').value;
+        if(x == ""){
+            alert("Enter valid email")
+            return false;
+        }
+        else if(y == ""){
+            alert("Enter a Password");
+            return false;
+        }
+        else{
+            return true;
+        }
+        
+
+    }
+    function login(){
+        document.getElementById('signin');
+        document.getElementById('intro');
+
+    }
+</script>
+
+</html
