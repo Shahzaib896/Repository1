@@ -1,0 +1,55 @@
+body{
+    background-color: rgb(249, 237, 252);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div{
+    background-color: white;
+}
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+.welcome{
+    opacity: 0;
+    transition: linear 2s ease;
+    width: 25pc;
+    height: 30vh;
+    text-align: center;
+    transform: translateY(20vw);
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px 2px rgb(166, 165, 165);
+    display: inherit;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    & h1{
+        font-family: 'Orbitron', sans-serif;
+        margin: 0;
+        font-size: 3em;
+        opacity: 0.9;
+        background: linear-gradient(to bottom, rgb(79, 1, 79), rgb(232, 63, 91));
+        background-size: cover; 
+        background-clip: text; 
+        -webkit-background-clip: text;
+        color: transparent; 
+    }        
+    & button{
+        background: linear-gradient(to right, purple, rgb(232, 63, 91));
+        padding: 2% 5%;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 1.1em;
+        border-radius: 14px;
+        border: none;
+        color: white;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+}
+.welcome button:hover{
+    padding: 3% 6%;
+    font-size: 1.2em;
+    transition: 0.2s ease-in-out;
+    box-shadow: 1px 1px 10px purple;
+}
+
+
+

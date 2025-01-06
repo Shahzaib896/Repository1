@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="load()">
+    <div class="welcome" id="welcomeDiv">
+        <h1>Tic Tac Toe</h1>
+        <button id="page2">Start</button>
+    </div>
+</body>
+</html>
+<script>
+    let Page2 = document.getElementById("page2");
+    Page2.addEventListener("click", ()=>{
+        window.location.href = "http://localhost/VsCode/Folders/Projects/ticTacToe/page2.html";
+    });
+    function load(){
+        document.getElementById("welcomeDiv").style.opacity=1;
+    }
+</script>
