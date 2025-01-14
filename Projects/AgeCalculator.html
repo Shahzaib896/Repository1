@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+        body{
+            background-color: rgb(249, 242, 242);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form{
+            margin-top: 15vw;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding-bottom: 1%;
+            width: 20pc;
+            height: 25vh;
+            box-shadow: 2px 3px 7px gray;
+            border: none;
+            border-radius: 10px;
+        }
+        input[type="date"]{
+            width: 80%;
+            margin: 4px;
+        }
+        input[type="submit"]{
+            background-color: rgb(34, 171, 34);
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            margin: 0.5pc;
+            padding: 2% 4%;
+            transition: all 0.3s ease-in;
+            &:hover {
+              box-shadow: 2px 3px 10px rgb(1, 164, 75);
+              font-size: 0.9rem;
+            }
+
+        }
+        input[type="reset"] {
+            background-color: orange;
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            padding: 2% 4%;
+            margin: 0.5pc;
+            transition: all 0.3s ease-in;
+            &:hover {
+              box-shadow: 2px 3px 10px rgb(234, 181, 7);
+              font-size: 0.9rem;
+            }
+        }
+
+        h1{
+            color: rgb(31, 31, 252);
+        }
+
+    </style>
+    </head>
+    <body>
+        <form onsubmit="findAge(event)">
+            <h1>Age Calculator</h1>
+            Enter your Date of Birth:<input type="date" id="dob">
+            <input type="submit" value="Find Age">
+            <input type="reset" value="Reset">
+        </form>
+    </body>
+</html>
+<script>
+    function findAge(event){
+        event.preventDefault();
+        let dob = document.getElementById("dob").value;
+        if(!dob){
+            alert("Empty Field❗");
+            return;
+        }
+        let dobDate = new Date(dob);
+        let today = new Date();
+
+        let ageInYears = today.getFullYear() - dobDate.getFullYear();
+        let ageInMonths = today.getMonth() - dobDate.getMonth();
+        if(ageInMonths < 0){
+            ageInYears--;
+        }
+
+        alert("Your age is: "+ageInYears);
+    }
+</script>
