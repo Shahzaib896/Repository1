@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(210, 234, 243);
+        }
+        form{
+            width: 35vw;
+            margin: 10vw auto;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: #fbe8e8;
+            text-align: center;
+            padding: 0.5% 0% 2% 0%;
+            box-shadow: 2px 3px 10px gray;
+        }
+        input[type="submit"]{
+            color: white;
+            background-color: green;
+            border: none;
+            border-radius: 10px;
+            padding: 1.5% 4%;
+            margin: 4px;
+            transition: all 0.3s ease;
+            &:hover{
+                font-size: 1.01em;
+                box-shadow: 2px 3px 10px lightgreen;
+            }
+        }
+        b{
+            color: blue;
+        }
+    </style>
+</head>
+<body id="body">
+    <form onsubmit="changeTheme(event)">
+        <h1>Change <b>Theme</b></h1>
+        Background Color: <input type="text" id="backColor"><br>
+        Font Color: <input type="text" id="textColor"><br>
+        <input type="submit" value="Change">
+    </form>
+    <script>
+        function changeTheme(event){
+            event.preventDefault(); //Prevents from the refreshing and submitting the empty data in the form.
+
+            let background = document.getElementById("backColor").value;
+            let fontColor = document.getElementById("textColor").value;
+
+            if(background == ""){
+               alert("Background Color is empty❗");
+               return;
+            } else if(fontColor == ""){
+               alert("Font color is empty❗");
+               return;
+            }
+
+            let body = document.getElementById("body");
+            body.style.backgroundColor = background;
+            body.style.color = fontColor;
+
+            console.log(background+fontColor);
+        }
+    </script>
+</body>
+</html>

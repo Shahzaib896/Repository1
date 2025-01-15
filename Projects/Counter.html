@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+        div{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 10vw auto;
+            background: linear-gradient(rgb(107, 209, 243), rgb(14, 167, 218));
+            width: 30pc;
+            box-shadow: 2px 3px 12px rgb(4, 4, 201);
+            padding-bottom: 2%;
+            text-align: center;
+        }
+        button, #reset{
+            padding: 3px 10px;
+            border: 3px solid black;
+            border-radius: 14px;
+            transition: all ease;
+            animation: border 10s ease-in-out 0s infinite;
+            background-color: #fff;
+        }
+        @keyframes border {
+            0%{
+                border-color: rgb(239, 34, 123);
+            }
+            25%{
+                border-color: rgb(200, 27, 111);
+            }
+            50%{
+                border-color: rgb(224, 93, 23);
+            }
+            75%{
+                border-color: rgb(242, 185, 28);
+            }
+            100%{
+                border-color: rgb(228, 228, 14);
+            }
+        }
+        h1{
+            color: blue;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin-bottom: 0;
+        }
+        p{
+            font-size: 3em;
+            margin: 1pc;
+            font-weight: bold;
+            color: #fff;
+        }
+    </style>
+    </head>
+    <body>
+            <div>
+                <h1>Counter</h1>
+                <p id="counter">0</p>  <!-- Initial value set to 0 -->
+                <input type="reset" value="Reset" id="reset">
+                <button id="start">Start</button>
+                <button id="increase">Increase</button>
+            </div>
+    </body>
+</html>
+        
+        <script>
+            let counter = document.getElementById("counter");
+            let start = 0;
+            let startBtn = document.getElementById('start');
+            let increaseBtn = document.getElementById('increase');
+        
+            startBtn.addEventListener("click", () => {
+                counter.innerText = start;
+                start++;
+            });
+        
+            increaseBtn.addEventListener("click", () => {
+                start += 2; // Increase your start value by 2
+                counter.innerText = start;
+            });
+        </script>
+        
