@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Review Carousel</title>
+        <link rel="shortcut icon" href="../Images/Review.png"
+            type="image/x-icon">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+        body{
+            background-color: rgb(245, 241, 241);
+        }
+        form{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            padding: 2% 5%;
+            background-color: #fff;
+            width: 30pc;
+            margin: 10vw auto;
+            box-shadow: 2px 3px 10px gray;
+        }
+        input[type="text"]{
+            width: 72%;
+            padding: 1%;
+        }
+        input[type="text"], input[type="file"]{
+            margin: 2%;
+        }
+        h1{
+            text-align: center;
+        }
+        textarea{
+            width: 90.7%;
+            height: 8vh;
+            padding: 1%;
+            margin: 5px 10px;
+        }
+        .my-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 40%;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .my-button:hover{
+            transform: scale(0.9);
+            transition: 0.3s ease;
+            box-shadow: 1px 1px 8px #084ee5;
+        }
+        label{
+            color: yellow;
+            margin: 2px;
+            font-size: large;
+            cursor: pointer;
+        }
+        input[type="radio"]:checked + label ~ label{
+            color: #c7c5c5;
+        }
+        label:active{
+            transform: scale(0.8);
+            transition: 0.3s ease;
+        }
+        input[type="radio"]{
+            display: none;
+        }
+        input:focus{
+            transform: scale(0.98);
+            transition: 0.3s ease;
+        }
+        section{
+            font-family:Arial, Helvetica, sans-serif ;
+            padding: 2% 5%;
+            background-color: #fff;
+            width: 30pc;
+            margin: 20vw auto;
+            box-shadow: 2px 3px 10px gray;
+            text-align: center;
+        }
+        section h2{
+            margin: 5px;
+        }
+        img{
+            width: 20%;
+            border: 1px solid blue;
+            border-radius: 50%;
+        }
+        section h5{
+            color: #ff00d0;
+            text-shadow: 0px 0px 3px #b908e5;
+            margin: 0;
+            font-size: 0.7em;
+        }
+        section p{
+            box-shadow: 0px 0px 2px inset #007bff;
+            padding: 2% 1%;
+        }
+        section button{
+            background-color: #007bff;
+            padding: 1% 2%;
+            font-size: 1em;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+        }
+        section button:hover{
+            transform: scale(0.9);
+            transition: all 0.3s ease;
+            box-shadow: 1px 1px 6px #084ee5;
+        }
+        
+    </style>
+    </head>
+    <body>
+        <form onsubmit="formValidation(event);" id="form">
+            <h1>Enter your details</h1>
+            First Name: <input type="text" name="fName" id="fName">
+            Last Name: <input type="text" name="lName" id="lName">
+            Profession: <input type="text" name="profession" id="profession">
+            Profile Picture: <input type="file" accept=".jpg, .png" name="pfp"
+                id="pfp"><br>
+            Rate Us:
+            <input type="radio" name="rating" id="r1">
+            <label for="r1" class="fa fa-star"></label>
+            <input type="radio" name="rating" id="r2">
+            <label for="r2" class="fa fa-star"></label>
+            <input type="radio" name="rating" id="r3">
+            <label for="r3" class="fa fa-star"></label>
+            <input type="radio" name="rating" id="r4">
+            <label for="r4" class="fa fa-star"></label>
+            <input type="radio" name="rating" id="r5">
+            <label for="r5" class="fa fa-star"></label><br><br>
+
+            Description:<br>
+            <textarea name="review" id="Review" maxlength="300"></textarea><br>
+            <input type="submit" value="Submit" class="my-button">
+        </form>
+        <section id="review">
+            <img src="../Images/Review.png" alt="User Review Image">
+            <h2 id="Name"></h2>
+            <h5 id="Profession2"></h5>
+            <p id="desc"></p>
+            <button id="msg">Surprise Me</button>
+        </section>
+    </body>
+
+</html>
+
+<script>
+    function formValidation(event) {
+        event.preventDefault();  // Prevent the form from submitting and reloading the page
+    let firstName = document.getElementById("fName").value.trim();
+    let lastName = document.getElementById("lName").value.trim();
+    let profession = document.getElementById("profession").value.trim();
+    let review = document.getElementById("Review").value.trim();
+
+    if (firstName === "" || lastName === "" || profession === "") {
+        alert("Fill Out the Data completely!");
+        return;
+    }
+
+    // Update the review section
+    document.getElementById("Name").innerText = firstName + ' ' + lastName;
+    document.getElementById("Profession2").innerText = profession;
+    document.getElementById("desc").innerText = review;
+
+    //Scroll the review section
+    document.getElementById("review").scrollIntoView({behavior: "smooth"});
+}
+    let msgBtn = document.getElementById("msg")
+    msgBtn.addEventListener("click", ()=>{
+        document.getElementById("form").scrollIntoView({behavior: "smooth"});
+    });
+
+</script>
