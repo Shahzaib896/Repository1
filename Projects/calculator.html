@@ -3,33 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>Js Calculator</title>
+    <style>
+        body{
+            background-color: rgb(236, 244, 247);
+        }
+        .calculator{
+            background: url('https://i.pinimg.com/236x/93/5f/5a/935f5a07eaf51d4e3cb30cc476209443.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 20pc;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1pc;
+            border-radius: 10px;
+            box-shadow: 3px 5px 5px rgb(90, 88, 88);
+            margin: 14vw auto;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .screen{
+            background-color: rgb(233, 252, 252);
+            width: 100%;
+            height: 20%;
+        }
+        table{
+            text-align: center;
+            width: 100%;
+            height: 75%;
+        }
+        th, td{
+            background-color: whitesmoke;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            width: 4pc;
+            height: 3pc;
+            &:hover{
+                transform: scale(0.99);
+                box-shadow: 1px 2px 5px rgb(103, 102, 102) inset;
+            }
+        }
+        .equal-btn{
+            background: linear-gradient(rgb(248, 61, 44), rgb(255, 106, 0));
+            color: aliceblue;
+            font-size: 2em;
+            width: 4pc;
+        }
+        .small, .big{
+            text-align: right;
+            padding-right: 2%;
+            margin: 5px;
+            overflow: hidden;
+        }
+        .big{
+            font-size: 2em;
+        }
+    </style>
 </head>
 <body>
-    <h1>Calculator</h1>
+    <div class="calculator">
+        <div class="screen">
+            <p class="small" id="small">0</p>
+            <p class="big" id="big"></p>
+        </div>
+        <table>
+            <tr>
+                <th onclick="handleOperator('+')">+</th>
+                <th onclick="handleOperator('-')">−</th>
+                <th onclick="handleOperator('*')">x</th>
+                <th onclick="handleOperator('/')">/</th>
+            </tr>
+            <tr>
+                <td onclick="display('7')">7</td>
+                <td onclick="display('8')">8</td>
+                <td onclick="display('9')">9</td>
+                <td class="equal-btn" rowspan="4"  onclick="calculate()">=</td>
+            </tr>
+            <tr>
+                <td onclick="display('4')">4</td>
+                <td onclick="display('5')">5</td>
+                <td onclick="display('6')">6</td>
+            </tr>
+            <tr>
+                <td onclick="display('1')">1</td>
+                <td onclick="display('2')">2</td>
+                <td onclick="display('3')">3</td>
+            </tr>
+            <tr>
+                <td onclick="display('0')">0</td>
+                <td onclick="display('.')">.</td>
+                <td onclick="clearScreen()">C</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        let currentInput = ''; 
+        let previousInput = '';
+        let operator = null;
+
+        function display(value){
+            if(value==='.' && currentInput.includes('.')) return; 
+            currentInput += value; //currentInput = value + currentInput; //1+''
+            updateDisplay();
+        }
+
+        function handleOperator(op){
+            if(currentInput === '') return;
+            if(previousInput !== '') {
+                calculate();
+            }
+            operator = op;
+            previousInput = currentInput;
+            currentInput = '';
+        }
+
+        function calculate(){
+            if(currentInput==='' || previousInput==='') return;
+            let result;
+            const prev = parseFloat(previousInput);
+            const current = parseFloat(currentInput);
+
+            switch(operator){
+                case '+':
+                    result = prev + current;
+                    break;
+                case '-':
+                    result = prev - current;
+                    break;
+                case '*': 
+                    result = prev * current;
+                    break;
+                case "/":
+                    result = prev/current;
+                    break;
+                default:
+                    return;
+            }
+            currentInput = result.toString();
+            operator = null;
+            previousInput = '';
+            updateDisplay();
+        }
+        function clearScreen() {
+            currentInput = '';
+            previousInput = '';
+            operator = null;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            const big = document.getElementById("big");
+            const small = document.getElementById("small");
+            big.innerHTML = currentInput;
+            small.innerHTML = previousInput + (operator ? ` ${operator} ` : '');
+        }
+    </script>
 </body>
 </html>
-
-<script>
-    let num1 = parseInt(prompt("Enter first Number:"));
-    let num2 = parseInt(prompt("Enter the second number:"));
-    let operation = prompt("Enter the operation:");
-    let result;
-    switch(operation){
-        case '+':
-            result = num1+num2;
-            break;
-        case '-':
-            result = num1 - num2;
-            break;
-        case '*':
-            result = num1 * num2;
-            break;
-        case '/':
-            result = num1/num2;
-            break;
-        default:
-            alert("Unidentified Operation");
-    }
-    alert(result);
-</script>
