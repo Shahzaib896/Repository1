@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Change color</title>
+        <style>
+            body{
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+            .main{
+                width: 25pc;
+                padding: 1% 2%;
+                display: flex;
+                justify-content: center;
+            }
+            #box1, #box2, #box3{
+                width: 7pc;
+                height: 10vh;
+                border-radius: 10%;
+                margin-left: 10px;
+                transition: all 0.3s ease;
+                cursor:grab;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #box1:hover, #box2:hover, #box3:hover {
+                transform: scale(1.1);
+                box-shadow: 1px 2px 6px rgb(28, 28, 28);
+            }
+            #box1{
+                background-color: rgb(19, 143, 184);
+            }
+            #box2{
+                background-color: lightcoral;
+            }
+            #box3{
+                background-color: greenyellow;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Click any box</h2>
+        <div class="main">
+            <div id="box1" onclick="changeBackground('box1')">Blue</div>
+            <div id="box2" onclick="changeBackground('box2')">Pink</div>
+            <div id="box3" onclick="changeBackground('box3')">Yellow</div>
+        </div>
+    </body>
+    <script>
+        function changeBackground(boxChange){
+            let box = document.getElementById(boxChange);
+            let color = window.getComputedStyle(box).backgroundColor;
+            document.body.style.backgroundColor=color;
+            document.body.style.color="white";
+        }
+    </script>
+</html>
