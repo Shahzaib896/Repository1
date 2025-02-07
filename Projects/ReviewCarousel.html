@@ -35,6 +35,7 @@
             height: 8vh;
             padding: 1%;
             margin: 5px 10px;
+            overflow: hidden;
         }
         .my-button {
             background-color: #007bff;
@@ -79,7 +80,7 @@
             padding: 2% 5%;
             background-color: #fff;
             width: 30pc;
-            margin: 20vw auto;
+            margin: 20pc auto;
             box-shadow: 2px 3px 10px gray;
             text-align: center;
         }
@@ -87,8 +88,9 @@
             margin: 5px;
         }
         img{
-            width: 20%;
-            border: 1px solid blue;
+            width: 6.5pc;
+            height: 15vh;
+            box-shadow: 10px 3px rgb(67, 67, 232);
             border-radius: 50%;
         }
         section h5{
@@ -142,7 +144,7 @@
             <input type="submit" value="Submit" class="my-button">
         </form>
         <section id="review">
-            <img src="../Images/Review.png" alt="User Review Image">
+            <img src="" id="imgDisplay" alt="User Review Image">
             <h2 id="Name"></h2>
             <h5 id="Profession2"></h5>
             <p id="desc"></p>
@@ -169,7 +171,12 @@
     document.getElementById("Name").innerText = firstName + ' ' + lastName;
     document.getElementById("Profession2").innerText = profession;
     document.getElementById("desc").innerText = review;
-
+    let pfp = document.getElementById("pfp");
+    let img = document.getElementById("imgDisplay");
+    const file = pfp.files[0];
+    if(file){
+        img.src = URL.createObjectURL(file);
+    }
     //Scroll the review section
     document.getElementById("review").scrollIntoView({behavior: "smooth"});
 }
