@@ -7,39 +7,48 @@
     <style>
         body{
             background-color: rgb(210, 234, 243);
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
         }
         form{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
             width: 35vw;
             margin: 10vw auto;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            background-color: #fbe8e8;
+            background-color: #e9ecfb;
             text-align: center;
             padding: 0.5% 0% 2% 0%;
             box-shadow: 2px 3px 10px gray;
+            border-radius: 10px;
         }
         input[type="submit"]{
             color: white;
-            background-color: green;
+            background-color: rgb(10, 47, 232);
             border: none;
             border-radius: 10px;
             padding: 1.5% 4%;
             margin: 4px;
+            width: 6pc;
             transition: all 0.3s ease;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             &:hover{
                 font-size: 1.01em;
-                box-shadow: 2px 3px 10px lightgreen;
+                box-shadow: 2px 3px 10px rgb(9, 50, 112);
             }
         }
-        b{
-            color: blue;
+        span{
+            margin: 4px 0 4px 0 ;
         }
     </style>
 </head>
 <body id="body">
-    <form onsubmit="changeTheme(event)">
-        <h1>Change <b>Theme</b></h1>
-        Background Color: <input type="text" id="backColor"><br>
-        Font Color: <input type="text" id="textColor"><br>
+    <form onsubmit="changeTheme(event)" id="mainForm">
+        <h1>Change Theme</h1>
+        <span>Background Color: <input type="text" id="backColor"></span>
+        <span>Main Div color: <input type="text" id="form"></span>
+        <span>Font Color: <input type="text" id="textColor"></span>
         <input type="submit" value="Change">
     </form>
     <script>
@@ -48,6 +57,7 @@
 
             let background = document.getElementById("backColor").value;
             let fontColor = document.getElementById("textColor").value;
+            let divColor = document.getElementById("form").value;
 
             if(background == ""){
                alert("Background Color is empty❗");
@@ -55,12 +65,15 @@
             } else if(fontColor == ""){
                alert("Font color is empty❗");
                return;
+            } else if(divColor == ""){
+                alert("Div color is empty");
             }
 
             let body = document.getElementById("body");
             body.style.backgroundColor = background;
             body.style.color = fontColor;
-
+            let form = document.getElementById("mainForm");
+            form.style.backgroundColor = divColor;
             console.log(background+fontColor);
         }
     </script>
