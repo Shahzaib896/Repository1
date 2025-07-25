@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList</title>
+    <link rel="shortcut icon" href="../../../../Downloads/Donna Stroupe.png" type="image/x-icon">
+</head>
+<body>
+    <div class="main">
+        <div class="input-area">
+            <h1>ToDoList</h1>
+            <form id="todo-form">
+                <input type="text" name="list-input" placeholder="Write something" onclick="colorChange()" id="list-input">
+                <input type="submit" id="add-btn" value="Add">
+            </form>
+        </div>
+        <div class="output">
+            <h3 id='shortText' style="text-align: center;">Your List will appear here</h3>
+            <div id="lists">
+                <!-- <li>Hi there <span class="btns"><button id="del-btn">Delete</button> <button id="edit-btn">Edit</button></span></li> -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    let input = document.getElementById('list-input')
+    const form = document.getElementById('todo-form')
+    let listParent = document.getElementById('lists')
+    let i = 1
+
+    function colorChange(){
+        input.style.background = 'linear-gradient(rgb(230, 252, 240), rgb(255, 255, 255))'
+        input.style.color = '#000'
+    }
+
+    form.addEventListener('submit', function (event){
+        event.preventDefault();
+
+        if (input.value.trim() === '') return;
+
+        const li = document.createElement('li')
+        li.textContent = `${i}-${input.value}`;
+
+        //Span
+        const span = document.createElement('span')
+        span.className = 'btns';
+
+        //Delete button
+        const delBtn = document.createElement('button')
+        delBtn.id = 'del-btn'
+        delBtn.textContent = 'Delete'
+        delBtn.addEventListener('click', ()=>{
+            listParent.removeChild(li)
+            i--;
+        });
+
+        const editBtn = document.createElement('button')
+        editBtn.id = 'edit-btn'
+        editBtn.textContent = 'Edit'
+        editBtn.addEventListener('click', ()=>{
+            const newValue = prompt('Edit item:', li.firstChild.textContent)
+            if (newValue !== null) li.firstChild.textContent = newValue
+        });
+
+        span.appendChild(delBtn)
+        span.appendChild(editBtn)
+        li.appendChild(span)
+
+        listParent.appendChild(li)
+
+        h3 = document.getElementById('shortText')
+        h3.innerText = 'Your Lists:'
+        h3.style.textAlign = 'left'
+
+        input.value = '';
+        i++;
+    });
+
+</script>

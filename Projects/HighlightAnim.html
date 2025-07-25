@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            background-color: rgb(245, 243, 243);
+            display: block;
+            width: 100%;
+            padding: 1%;
+            box-shadow: 1px 1px 5px gray;
+            border-radius: 2px;
+        }
+        h2{
+            color: rgb(189, 28, 28);
+            font-size: 1.5em;
+        }
+        p{
+            font-size: 1.05em;
+        }
+        #highlight{
+            transition: background-color 1s ease-in-out;
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Germany, France, UK ‘appalled’ by Gaza civilian casualties, urge ceasefire return</h2>
+        <p>In a joint statement, France, Germany and the UK expressed deep concern over the renewed Israeli attacks on Gaza, calling them a “dramatic step backward” for the people of Gaza and the captives held in the besieged territory, Al Jazeera reports.</p>
+        <p id="highlight">“We are appalled by the civilian casualties and urgently call for an immediate return to a ceasefire,” the statement by the three nations said.</p>
+        <p>The three nations urged all parties involved to return to negotiations.         </p>
+        <p>“More bloodshed is in no one’s interest. Israel should fully respect international law and allow aid to flow immediately,” they said</p>
+    </div>
+    <script>
+        let txtHighlight = document.getElementById("highlight");
+        // corrected the event listener to DOMContentLoaded
+        document.addEventListener("DOMContentLoaded",()=>{
+            setTimeout(()=>{
+                txtHighlight.style.backgroundColor="yellow";
+            },1000);
+            });
+        
+    </script>
+</body>
+</html>
